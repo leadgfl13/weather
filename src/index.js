@@ -54,10 +54,10 @@ const states = [
 	"Wisconsin",
 	"Wyoming",
 ];
-
+// sets the search button
+const searchbutton = document.getElementById("submit");
 //adds the states to the dropdown menu
 const drop = document.getElementById("stateDropdown");
-
 for (const state of states) {
 	let option = document.createElement("option");
 	option.value = state;
@@ -65,14 +65,13 @@ for (const state of states) {
 	drop.appendChild(option);
 }
 
-const searchbutton = document.getElementById("submit");
 searchbutton.addEventListener("click", (e) => {
 	e.preventDefault();
 	let location = document.getElementById("location");
 	let test = location.value;
-
+	let state = getState();
 	console.log(test);
-	getWeather(test);
+	getWeather(test, state);
 });
 function getAPI() {}
 
@@ -81,9 +80,9 @@ function getData() {
 	//key is ZVFB4SWSDYVUP2SNNA5AYMS7W
 }
 //ZVFB4SWSDYVUP2SNNA5AYMS7W
-async function getWeather(location) {
+async function getWeather(location, thestate) {
 	const thing = await fetch(
-		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location},US?key=ZVFB4SWSDYVUP2SNNA5AYMS7W`,
+		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}, ${thestate}US?key=ZVFB4SWSDYVUP2SNNA5AYMS7W`,
 		{ mode: "cors" }
 	);
 	const thingy = await thing.json();
@@ -98,6 +97,11 @@ async function getWeather(location) {
 			" with a high of " +
 			days[1].tempmax
 	);
+}
+
+function getState() {
+	let theState = drop.value;
+	return theState;
 }
 
 //address tells us the location

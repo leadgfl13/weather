@@ -25,7 +25,13 @@ async function getWeather(location) {
 	let days = thingy.days;
 	console.log(thingy);
 	console.log(address);
-	console.log(days[1].tempmax);
+	console.log(days[1].description);
+	alert(
+		"today's weather is " +
+			days[1].description +
+			" with a high of " +
+			days[1].tempmax
+	);
 }
 
 //address tells us the location

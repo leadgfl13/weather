@@ -1,3 +1,17 @@
 body {
+	border: 8px groove seagreen;
+	margin: 0px;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
+
+.left {
+	background-color: seashell;
+	grid-area: 1/1/2/2;
+}
+
+.right {
+	border: 2px solid darkblue;
 	background-color: skyblue;
+	grid-area: 1/2/1/3;
 }

@@ -84,6 +84,7 @@ async function getWeather(location, thestate) {
 		days[1].description +
 		" with a high of " +
 		days[1].tempmax;
+	return { info };
 }
 
 //this gets the state value from dropdown menu
@@ -99,27 +100,30 @@ searchbutton.addEventListener("click", (e) => {
 	let test = location.value;
 	let state = getState();
 	console.log(test);
-	getWeather(test, state);
-	makeGrid(1);
+	let data = getWeather(test, state);
+	makeGrid(2);
 });
 
 function makeGrid(gridname) {
-	let grid = document.createElement("div");
-	grid.setAttribute("id", `grid${gridname}`);
-	grid.setAttribute("class", "daygrid");
-	let rows = 10;
-	let columns = 2;
-	console.log("making grid");
-	for (let i = 0; i < rows; i++) {
-		for (let j = 0; j < columns; j++) {
-			console.log("making a grid element");
-			let gridelement = document.createElement("div");
-			gridelement.setAttribute("id", `cell${i}${j}`);
-			gridelement.innerHTML = `cell ${i}${j}`;
-			grid.appendChild(gridelement);
+	for (let z = 0; z < gridname; z++) {
+		let grid = document.createElement("div");
+		grid.setAttribute("id", `grid${gridname}`);
+		grid.setAttribute("class", "daygrid");
+		let rows = 5;
+		let columns = 2;
+		console.log("making grid");
+		for (let i = 0; i < rows; i++) {
+			for (let j = 0; j < columns; j++) {
+				console.log("making a grid element");
+				let gridelement = document.createElement("div");
+				gridelement.setAttribute("id", `grid${gridname}${i}${j}`);
+				gridelement.setAttribute("class", "gridelement");
+				gridelement.innerHTML = `cell ${i}${j}`;
+				grid.appendChild(gridelement);
+			}
 		}
+		forecast.append(grid);
 	}
-	forecast.append(grid);
 }
 //address tells us the location
 //"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=ZVFB4SWSDYVUP2SNNA5AYMS7W "

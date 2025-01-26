@@ -55,7 +55,7 @@ const states = [
 	"Wyoming",
 ];
 // sets the search button
-const forecast = document.getElementById("daygrid");
+const forecast = document.getElementById("forecast");
 const searchbutton = document.getElementById("submit");
 //adds the states to the dropdown menu
 const drop = document.getElementById("stateDropdown");
@@ -69,8 +69,6 @@ for (const state of states) {
 //this will be the function to call the API service and get info.
 async function getWeather(location, thestate) {
 	//key is ZVFB4SWSDYVUP2SNNA5AYMS7W (API Key)
-
-	//
 	const thing = await fetch(
 		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}, ${thestate}US?key=ZVFB4SWSDYVUP2SNNA5AYMS7W`,
 		{ mode: "cors" }
@@ -86,24 +84,12 @@ async function getWeather(location, thestate) {
 		days[1].description +
 		" with a high of " +
 		days[1].tempmax;
-
-	makeBox(1, 25, info);
 }
 
 //this gets the state value from dropdown menu
 function getState() {
 	let theState = drop.value;
 	return theState;
-}
-
-//Make a box that displys information
-function makeBox(numboxes, date, description) {
-	let box = document.createElement("div");
-	let desc = document.createElement("div");
-	desc.innerHTML = description;
-
-	box.append(desc);
-	forecast.append(box);
 }
 
 //event listeners go here
@@ -114,10 +100,26 @@ searchbutton.addEventListener("click", (e) => {
 	let state = getState();
 	console.log(test);
 	getWeather(test, state);
+	makeGrid(1);
 });
 
-function makeReport() {
-	let report = document.createElement("grid");
+function makeGrid(gridname) {
+	let grid = document.createElement("div");
+	grid.setAttribute("id", `grid${gridname}`);
+	grid.setAttribute("class", "daygrid");
+	let rows = 10;
+	let columns = 2;
+	console.log("making grid");
+	for (let i = 0; i < rows; i++) {
+		for (let j = 0; j < columns; j++) {
+			console.log("making a grid element");
+			let gridelement = document.createElement("div");
+			gridelement.setAttribute("id", `cell${i}${j}`);
+			gridelement.innerHTML = `cell ${i}${j}`;
+			grid.appendChild(gridelement);
+		}
+	}
+	forecast.append(grid);
 }
 //address tells us the location
 //"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=ZVFB4SWSDYVUP2SNNA5AYMS7W "

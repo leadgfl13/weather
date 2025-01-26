@@ -55,7 +55,7 @@ const states = [
 	"Wyoming",
 ];
 // sets the search button
-const right = document.getElementById("right");
+const forecast = document.getElementById("daygrid");
 const searchbutton = document.getElementById("submit");
 //adds the states to the dropdown menu
 const drop = document.getElementById("stateDropdown");
@@ -101,10 +101,9 @@ function makeBox(numboxes, date, description) {
 	let box = document.createElement("div");
 	let desc = document.createElement("div");
 	desc.innerHTML = description;
-	const right = document.getElementById("right");
 
 	box.append(desc);
-	right.append(box);
+	forecast.append(box);
 }
 
 //event listeners go here
@@ -116,6 +115,10 @@ searchbutton.addEventListener("click", (e) => {
 	console.log(test);
 	getWeather(test, state);
 });
+
+function makeReport() {
+	let report = document.createElement("grid");
+}
 //address tells us the location
 //"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=ZVFB4SWSDYVUP2SNNA5AYMS7W "
 

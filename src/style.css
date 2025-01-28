@@ -7,6 +7,9 @@ body {
 
 .left {
 	background-color: seashell;
+	height: 100%;
+	width: 100%;
+	display: flex;
 	grid-area: 1/1/2/2;
 }
 
@@ -20,6 +23,27 @@ body {
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
+}
+
+form {
+	height: 100%;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	margin-top: -75%;
+}
+
+#location,
+#stateDropdown {
+	width: 200px;
+}
+
+#submit {
+	margin-top: 20px;
+	align-self: center;
+	width: 200px;
 }
 .daygrid {
 	height: 100%;

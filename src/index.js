@@ -74,10 +74,10 @@ async function getWeather(location, thestate) {
 		{ mode: "cors" }
 	);
 	const data = await response.json();
-	console.log(data);
 	const currentConditions = data.currentConditions.conditions;
 	const tempmax = data.days[0].tempmax;
-	return currentConditions, tempmax;
+
+	makeGrid(1, tempmax);
 }
 
 //this gets the state value from dropdown menu
@@ -116,7 +116,6 @@ function makeGrid(amount, hightemp) {
 		}
 		forecast.append(grid);
 	}
-	fillGrid(amount, hightemp);
 }
 
 //address tells us the location

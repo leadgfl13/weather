@@ -74,10 +74,8 @@ async function getWeather(location, thestate) {
 		{ mode: "cors" }
 	);
 	const data = await response.json();
-	const currentConditions = data.currentConditions.conditions;
-	const tempmax = data.days[0].tempmax;
 
-	makeGrid(1, tempmax);
+	makeGrid(1);
 }
 
 //this gets the state value from dropdown menu
@@ -92,18 +90,18 @@ searchbutton.addEventListener("click", (e) => {
 	let location = document.getElementById("location");
 	let test = location.value;
 	let state = getState();
-	// the info gets runs the weather, which returns a response.  .THEN used the response, and does something with
-	let info = getWeather(test, state).then((response) => console.log(response));
+	// the info gets runs the weather, which returns a response.  .THEN used the response, and does something with\
+	getWeather(test, state);
 });
 
-function makeGrid(amount, hightemp) {
+function makeGrid(amount) {
 	for (let z = 0; z < amount; z++) {
 		let grid = document.createElement("div");
 		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
 		let rows = 5;
 		let columns = 2;
-		console.log("making grid");
+
 		for (let i = 0; i < rows; i++) {
 			for (let j = 0; j < columns; j++) {
 				console.log("making a grid element");
@@ -114,6 +112,7 @@ function makeGrid(amount, hightemp) {
 				grid.appendChild(gridelement);
 			}
 		}
+
 		forecast.append(grid);
 	}
 }

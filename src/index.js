@@ -69,22 +69,15 @@ for (const state of states) {
 //this will be the function to call the API service and get info.
 async function getWeather(location, thestate) {
 	//key is ZVFB4SWSDYVUP2SNNA5AYMS7W (API Key)
-	const thing = await fetch(
+	const response = await fetch(
 		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}, ${thestate}US?key=ZVFB4SWSDYVUP2SNNA5AYMS7W`,
 		{ mode: "cors" }
 	);
-	const thingy = await thing.json();
-	let address = thingy.address;
-	let days = thingy.days;
-	console.log(thingy);
-	console.log(address);
-	console.log(days[1].description);
-	let info =
-		"today's weather is " +
-		days[1].description +
-		" with a high of " +
-		days[1].tempmax;
-	return { info };
+	const data = await response.json();
+	console.log(data);
+	const currentConditions = data.currentConditions.conditions;
+	const tempmax = data.days[0].tempmax;
+	return currentConditions, tempmax;
 }
 
 //this gets the state value from dropdown menu
@@ -99,15 +92,14 @@ searchbutton.addEventListener("click", (e) => {
 	let location = document.getElementById("location");
 	let test = location.value;
 	let state = getState();
-	console.log(test);
-	let data = getWeather(test, state);
-	makeGrid(2);
+	// the info gets runs the weather, which returns a response.  .THEN used the response, and does something with
+	let info = getWeather(test, state).then((response) => console.log(response));
 });
 
-function makeGrid(gridname) {
-	for (let z = 0; z < gridname; z++) {
+function makeGrid(amount, hightemp) {
+	for (let z = 0; z < amount; z++) {
 		let grid = document.createElement("div");
-		grid.setAttribute("id", `grid${gridname}`);
+		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
 		let rows = 5;
 		let columns = 2;
@@ -116,7 +108,7 @@ function makeGrid(gridname) {
 			for (let j = 0; j < columns; j++) {
 				console.log("making a grid element");
 				let gridelement = document.createElement("div");
-				gridelement.setAttribute("id", `grid${gridname}${i}${j}`);
+				gridelement.setAttribute("id", `grid${amount}${i}${j}`);
 				gridelement.setAttribute("class", "gridelement");
 				gridelement.innerHTML = `cell ${i}${j}`;
 				grid.appendChild(gridelement);
@@ -124,7 +116,9 @@ function makeGrid(gridname) {
 		}
 		forecast.append(grid);
 	}
+	fillGrid(amount, hightemp);
 }
+
 //address tells us the location
 //"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=ZVFB4SWSDYVUP2SNNA5AYMS7W "
 

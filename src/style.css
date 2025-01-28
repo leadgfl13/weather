@@ -31,19 +31,25 @@ form {
 	width: 100%;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
-	margin-top: -75%;
+	align-items: center;
 }
-
-#location,
+#location {
+	height: 40px;
+	font-size: 18px;
+	width: 200px;
+}
 #stateDropdown {
+	height: 40px;
+	font-size: 18px;
 	width: 200px;
 }
-
 #submit {
-	margin-top: 20px;
+	margin-top: 24px;
 	align-self: center;
-	width: 200px;
+	height: 80px;
+	border-radius: 8px;
+	font-size: 22px;
+	width: 400px;
 }
 .daygrid {
 	height: 100%;

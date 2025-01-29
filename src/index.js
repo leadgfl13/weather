@@ -78,7 +78,7 @@ async function getWeather(location, thestate) {
 		//this new response is then passed to the makeGridfunction, which takes this response as an argument
 		//this passes the data into makeGrid
 		.then((response) => response.json())
-		.then((response) => makeGrid(1, response));
+		.then((response) => makeGrid(5, response));
 }
 //this gets the state value from dropdown menu
 function getState() {
@@ -101,23 +101,18 @@ function makeGrid(amount, response) {
 	//So instead of submit, get forecast 1 day, 2 day, etc.  Calls the fetch request, and passes in a number for the days
 	//which gets passed onto makeGrid
 	//this now has all the data it needs to run, so it can set parameters for the weather based on the response argument
-	let currentConditions = response.currentConditions.conditions;
-	let maxTemp = response.days[0].tempmax;
-	let feels = response.days[0].feelslike;
-	let minTemp = response.days[0].tempmin;
+
 	//days[0] accesses the current day:
 	//tempax;tempmin,description, feelslike,
-	console.log(response);
-	console.log("It currently feels like " + feels);
-	console.log("The high for today is " + maxTemp);
-	console.log("The low for today is " + minTemp);
-	console.log("The weather forecast today is " + currentConditions);
 	for (let z = 0; z < amount; z++) {
+		let currentConditions = response.currentConditions.conditions;
+		let maxTemp = response.days[z].tempmax;
+		let feels = response.days[z].feelslike;
+		let minTemp = response.days[z].tempmin;
 		let grid = document.createElement("div");
 		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
 		forecast.append(grid);
-
 		let maxtemplabel = document.createElement("maxlabel");
 		maxtemplabel.setAttribute("id", "maxtemplabel");
 		maxtemplabel.innerHTML = maxTemp;
@@ -125,7 +120,6 @@ function makeGrid(amount, response) {
 		let maxtemp = document.createElement("div");
 		maxtemp.innerHTML = maxTemp;
 		maxtemp.setAttribute("id", "maxtemp");
-
 		grid.append(maxtemplabel);
 		grid.append(maxtemp);
 	}

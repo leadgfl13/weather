@@ -116,21 +116,21 @@ function makeGrid(amount, response) {
 		let grid = document.createElement("div");
 		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
-
 		forecast.append(grid);
-	}
-	//once the grid is appended, you can grab elements and add the correct information
-	let daygrid = document.getElementById("grid1");
-	let maxtemplabel = document.createElement("maxlabel");
-	maxtemplabel.setAttribute("id", "maxtemplabel");
-	maxtemplabel.innerHTML = maxTemp;
-	maxtemplabel.innerHTML = "High";
-	let maxtemp = document.createElement("div");
-	maxtemp.innerHTML = maxTemp;
-	maxtemp.setAttribute("id", "maxtemp");
 
-	daygrid.append(maxtemplabel);
-	daygrid.append(maxtemp);
+		let maxtemplabel = document.createElement("maxlabel");
+		maxtemplabel.setAttribute("id", "maxtemplabel");
+		maxtemplabel.innerHTML = maxTemp;
+		maxtemplabel.innerHTML = "High";
+		let maxtemp = document.createElement("div");
+		maxtemp.innerHTML = maxTemp;
+		maxtemp.setAttribute("id", "maxtemp");
+
+		grid.append(maxtemplabel);
+		grid.append(maxtemp);
+	}
+
+	//once the grid is appended, you can grab elements and add the correct information
 }
 
 //address tells us the location

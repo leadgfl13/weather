@@ -73,6 +73,10 @@ async function getWeather(location, thestate) {
 		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}, ${thestate}US?key=ZVFB4SWSDYVUP2SNNA5AYMS7W`,
 		{ mode: "cors" }
 	)
+		//takes the response from the fetch request, and then applies the .json format to it
+		//this returns the jsonified data, which is now the "response"
+		//this new response is then passed to the makeGridfunction, which takes this response as an argument
+		//this passes the data into makeGrid
 		.then((response) => response.json())
 		.then((response) => makeGrid(response));
 }
@@ -93,7 +97,12 @@ searchbutton.addEventListener("click", (e) => {
 });
 
 function makeGrid(response) {
-	console.log(response);
+	//maybe also add an argument for days of the forecast ****** this may be another button instead of the submit button
+	//So instead of submit, get forecast 1 day, 2 day, etc.  Calls the fetch request, and passes in a number for the days
+	//which gets passed onto makeGrid
+	//this now has all the data it needs to run, so it can set parameters for the weather based on the response argument
+	let currentConditions = response.currentConditions.conditions;
+	console.log(currentConditions);
 	for (let z = 0; z < amount; z++) {
 		let grid = document.createElement("div");
 		grid.setAttribute("id", `grid${amount}`);

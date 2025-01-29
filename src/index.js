@@ -78,7 +78,7 @@ async function getWeather(location, thestate) {
 		//this new response is then passed to the makeGridfunction, which takes this response as an argument
 		//this passes the data into makeGrid
 		.then((response) => response.json())
-		.then((response) => makeGrid(response));
+		.then((response) => makeGrid(1, response));
 }
 //this gets the state value from dropdown menu
 function getState() {
@@ -96,7 +96,7 @@ searchbutton.addEventListener("click", (e) => {
 	getWeather(test, state);
 });
 
-function makeGrid(response) {
+function makeGrid(amount, response) {
 	//maybe also add an argument for days of the forecast ****** this may be another button instead of the submit button
 	//So instead of submit, get forecast 1 day, 2 day, etc.  Calls the fetch request, and passes in a number for the days
 	//which gets passed onto makeGrid

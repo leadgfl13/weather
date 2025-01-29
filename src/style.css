@@ -17,12 +17,15 @@ body {
 	border: 2px solid darkblue;
 	background-color: skyblue;
 	grid-area: 1/2/1/3;
+	display: flex;
+	justify-content: space-around;
 }
 
 #forecast {
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
+	justify-content: space-around;
 }
 
 form {

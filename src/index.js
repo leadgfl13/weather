@@ -119,7 +119,9 @@ function makeGrid(amount, response) {
 	//days[0] accesses the current day:
 	//tempax;tempmin,description, feelslike,
 	for (let z = 0; z < amount; z++) {
-		let currentConditions = response.currentConditions.conditions;
+		console.log(response);
+		let date = response.days[z].datetime;
+		let conditions = response.days[z].conditions;
 		let maxTemp = response.days[z].tempmax;
 		let feels = response.days[z].feelslike;
 		let minTemp = response.days[z].tempmin;
@@ -127,9 +129,13 @@ function makeGrid(amount, response) {
 		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
 		forecast.append(grid);
+		assignLabel("date", "date", "weatherlabels", date, grid);
+		assignLabel("conditions", "conditions", "weatherlabels", conditions, grid);
 
 		makeandAssign("maxtemp", "maxtemp", maxTemp, grid);
 		assignLabel("maxtemplabel", "maxtemplabel", "weatherlabels", "HIGH", grid);
+		makeandAssign("mintemp", "mintemp", minTemp, grid);
+		assignLabel("mintemplabel", "mintemplabel", "weatherlabels", "LOW", grid);
 	}
 
 	//once the grid is appended, you can grab elements and add the correct information

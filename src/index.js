@@ -96,6 +96,12 @@ searchbutton.addEventListener("click", (e) => {
 	getWeather(test, state);
 });
 
+function makeandAssign(name, id, weathervar, appendee) {
+	name = document.createElement("div");
+	name.setAttribute("id", id);
+	name.innerHTML = weathervar;
+	appendee.append(name);
+}
 function makeGrid(amount, response) {
 	//maybe also add an argument for days of the forecast ****** this may be another button instead of the submit button
 	//So instead of submit, get forecast 1 day, 2 day, etc.  Calls the fetch request, and passes in a number for the days
@@ -106,22 +112,22 @@ function makeGrid(amount, response) {
 	//tempax;tempmin,description, feelslike,
 	for (let z = 0; z < amount; z++) {
 		let currentConditions = response.currentConditions.conditions;
+
 		let maxTemp = response.days[z].tempmax;
 		let feels = response.days[z].feelslike;
 		let minTemp = response.days[z].tempmin;
+		let maxtemplabel = document.createElement("div");
+		maxtemplabel.setAttribute("id", "maxtemplabel");
+		maxtemplabel.innerHTML = maxTemp;
+		maxtemplabel.innerHTML = "High";
+
 		let grid = document.createElement("div");
 		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
 		forecast.append(grid);
-		let maxtemplabel = document.createElement("maxlabel");
-		maxtemplabel.setAttribute("id", "maxtemplabel");
-		maxtemplabel.innerHTML = maxTemp;
-		maxtemplabel.innerHTML = "High";
-		let maxtemp = document.createElement("div");
-		maxtemp.innerHTML = maxTemp;
-		maxtemp.setAttribute("id", "maxtemp");
+
+		makeandAssign("maxtemp", "maxtemp", maxTemp, grid);
 		grid.append(maxtemplabel);
-		grid.append(maxtemp);
 	}
 
 	//once the grid is appended, you can grab elements and add the correct information

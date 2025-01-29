@@ -72,12 +72,10 @@ async function getWeather(location, thestate) {
 	const response = await fetch(
 		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}, ${thestate}US?key=ZVFB4SWSDYVUP2SNNA5AYMS7W`,
 		{ mode: "cors" }
-	);
-	const data = await response.json();
-
-	makeGrid(1);
+	)
+		.then((response) => response.json())
+		.then((response) => makeGrid(response));
 }
-
 //this gets the state value from dropdown menu
 function getState() {
 	let theState = drop.value;
@@ -94,7 +92,8 @@ searchbutton.addEventListener("click", (e) => {
 	getWeather(test, state);
 });
 
-function makeGrid(amount) {
+function makeGrid(response) {
+	console.log(response);
 	for (let z = 0; z < amount; z++) {
 		let grid = document.createElement("div");
 		grid.setAttribute("id", `grid${amount}`);

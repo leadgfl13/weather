@@ -80,7 +80,7 @@ form {
 
 	border: 5px groove darkgreen;
 }
-#maxtemplabel {
+.weatherlabels {
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -91,6 +91,9 @@ form {
 	border: 2px solid black;
 	justify-content: center;
 	align-items: center;
+}
+
+#maxtemplabel {
 	grid-area: 3/1/4/2;
 }
 #maxtemp {

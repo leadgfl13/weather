@@ -59,7 +59,50 @@ form {
 	width: 200px;
 	grid-template-rows: 1fr 2fr 1fr 1fr 2fr;
 	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		"day" "day"
+		"image" "image"
+		"lowlabel" "low"
+		"highlabel" "high"
+		"description" "desciption";
+
 	border: 5px groove darkgreen;
+}
+
+#grid1 {
+	height: 100%;
+	display: grid;
+	justify-content: space-around;
+	align-items: center;
+	width: 200px;
+	grid-template-rows: 1fr 2fr 1fr 1fr 2fr;
+	grid-template-columns: 1fr 1fr;
+
+	border: 5px groove darkgreen;
+}
+#maxtemplabel {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	background-color: papayawhip;
+	font-size: 18px;
+	font-weight: 700;
+	text-decoration: underline;
+	border: 2px solid black;
+	justify-content: center;
+	align-items: center;
+	grid-area: 3/1/4/2;
+}
+#maxtemp {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	background-color: papayawhip;
+	font-size: 18px;
+	border: 2px solid black;
+	justify-content: center;
+	align-items: center;
+	grid-area: 3/2/4/3;
 }
 
 .gridelement {
@@ -70,5 +113,9 @@ form {
 }
 
 #grid100 {
+	display: flex;
+	align-items: center;
+	justify-content: Center;
 	background-color: red;
+	grid-area: span;
 }

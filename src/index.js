@@ -102,27 +102,35 @@ function makeGrid(amount, response) {
 	//which gets passed onto makeGrid
 	//this now has all the data it needs to run, so it can set parameters for the weather based on the response argument
 	let currentConditions = response.currentConditions.conditions;
-	console.log(currentConditions);
+	let maxTemp = response.days[0].tempmax;
+	let feels = response.days[0].feelslike;
+	let minTemp = response.days[0].tempmin;
+	//days[0] accesses the current day:
+	//tempax;tempmin,description, feelslike,
+	console.log(response);
+	console.log("It currently feels like " + feels);
+	console.log("The high for today is " + maxTemp);
+	console.log("The low for today is " + minTemp);
+	console.log("The weather forecast today is " + currentConditions);
 	for (let z = 0; z < amount; z++) {
 		let grid = document.createElement("div");
 		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
-		let rows = 5;
-		let columns = 2;
-
-		for (let i = 0; i < rows; i++) {
-			for (let j = 0; j < columns; j++) {
-				console.log("making a grid element");
-				let gridelement = document.createElement("div");
-				gridelement.setAttribute("id", `grid${amount}${i}${j}`);
-				gridelement.setAttribute("class", "gridelement");
-				gridelement.innerHTML = `cell ${i}${j}`;
-				grid.appendChild(gridelement);
-			}
-		}
 
 		forecast.append(grid);
 	}
+	//once the grid is appended, you can grab elements and add the correct information
+	let daygrid = document.getElementById("grid1");
+	let maxtemplabel = document.createElement("maxlabel");
+	maxtemplabel.setAttribute("id", "maxtemplabel");
+	maxtemplabel.innerHTML = maxTemp;
+	maxtemplabel.innerHTML = "High";
+	let maxtemp = document.createElement("div");
+	maxtemp.innerHTML = maxTemp;
+	maxtemp.setAttribute("id", "maxtemp");
+
+	daygrid.append(maxtemplabel);
+	daygrid.append(maxtemp);
 }
 
 //address tells us the location

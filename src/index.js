@@ -92,6 +92,7 @@ function getState() {
 //event listeners go here
 searchbutton.addEventListener("click", (e) => {
 	e.preventDefault();
+	forecast.innerHTML = "";
 	let location = document.getElementById("location");
 	let test = location.value;
 	let state = getState();
@@ -116,19 +117,19 @@ function assignLabel(name2, id, classes, text, appendeelabel) {
 
 //takes a string and checks for a specific word.  Returns a string based on the word found
 function addImage(string) {
-	if (string.inc("sun")) {
+	if (string.includes("sun")) {
 		return "sunimage";
 	}
-	if (string.inc("cloudy")) {
+	if (string.includes("cloudy")) {
 		return "cloudimage";
 	}
-	if (string.inc("storm")) {
+	if (string.includes("storm")) {
 		return "stormimage";
 	}
-	if (string.inc("rain")) {
+	if (string.includes("rain")) {
 		return "rainimage";
 	}
-	if (string.inc("snow")) {
+	if (string.includes("snow")) {
 		return "snowimage";
 	}
 }

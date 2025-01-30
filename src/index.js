@@ -113,23 +113,27 @@ function assignLabel(name2, id, classes, text, appendeelabel) {
 	name2.innerHTML = text;
 	appendeelabel.append(name2);
 }
-function makeGrid(amount, response) {
-	//maybe also add an argument for days of the forecast ****** this may be another button instead of the submit button
-	//So instead of submit, get forecast 1 day, 2 day, etc.  Calls the fetch request, and passes in a number for the days
-	//which gets passed onto makeGrid
-	//this now has all the data it needs to run, so it can set parameters for the weather based on the response argument
 
-	//days[0] accesses the current day:
-	//tempax;tempmin,description, feelslike,
-
-	function addImage(string) {
-		if (string.inc("sun")) return "sunimage";
-		if (string.inc("cloudy")) return "cloudimage";
-		if (string.inc("storm")) return "stormimage";
-		if (string.inc("rain")) return "rainimage";
-		if (string.inc("snow")) return "snowimage";
+//takes a string and checks for a specific word.  Returns a string based on the word found
+function addImage(string) {
+	if (string.inc("sun")) {
+		return "sunimage";
 	}
+	if (string.inc("cloudy")) {
+		return "cloudimage";
+	}
+	if (string.inc("storm")) {
+		return "stormimage";
+	}
+	if (string.inc("rain")) {
+		return "rainimage";
+	}
+	if (string.inc("snow")) {
+		return "snowimage";
+	}
+}
 
+function makeGrid(amount, response) {
 	for (let z = 0; z < amount; z++) {
 		console.log(response);
 		let date = response.days[z].datetime;

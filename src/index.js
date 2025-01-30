@@ -122,9 +122,14 @@ function makeGrid(amount, response) {
 	//days[0] accesses the current day:
 	//tempax;tempmin,description, feelslike,
 
-	function addImage() {
-		l;
+	function addImage(string) {
+		if (string.inc("sun")) return "sunimage";
+		if (string.inc("cloudy")) return "cloudimage";
+		if (string.inc("storm")) return "stormimage";
+		if (string.inc("rain")) return "rainimage";
+		if (string.inc("snow")) return "snowimage";
 	}
+
 	for (let z = 0; z < amount; z++) {
 		console.log(response);
 		let date = response.days[z].datetime;
@@ -138,7 +143,7 @@ function makeGrid(amount, response) {
 		forecast.append(grid);
 		assignLabel("date", "date", "weatherlabels", date, grid);
 		assignLabel("conditions", "conditions", "weatherlabels", conditions, grid);
-		assignLabel("image", "sunimage", "images", "", grid);
+		assignLabel("image", addImage(conditions), "images", "", grid);
 		makeandAssign("maxtemp", "maxtemp", maxTemp, grid);
 		assignLabel("maxtemplabel", "maxtemplabel", "weatherlabels", "HIGH", grid);
 		makeandAssign("mintemp", "mintemp", minTemp, grid);

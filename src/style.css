@@ -72,6 +72,16 @@ form {
 	border: 5px groove darkgreen;
 }
 
+.images {
+	height: 100%;
+	width: 100%;
+	grid-area: 2/1/3/3;
+	background-color: white;
+}
+#sunimage {
+	content: url("../images/sun.svg");
+}
+
 #grid1 {
 	height: 100%;
 	display: grid;

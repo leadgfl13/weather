@@ -57,6 +57,9 @@ const states = [
 // sets the search button
 const forecast = document.getElementById("forecast");
 const searchbutton = document.getElementById("submit");
+
+const sun = document.createElement("img");
+sun.src = "../images/sun.svg";
 //adds the states to the dropdown menu
 const drop = document.getElementById("stateDropdown");
 for (const state of states) {
@@ -118,6 +121,10 @@ function makeGrid(amount, response) {
 
 	//days[0] accesses the current day:
 	//tempax;tempmin,description, feelslike,
+
+	function addImage() {
+		l;
+	}
 	for (let z = 0; z < amount; z++) {
 		console.log(response);
 		let date = response.days[z].datetime;
@@ -131,13 +138,12 @@ function makeGrid(amount, response) {
 		forecast.append(grid);
 		assignLabel("date", "date", "weatherlabels", date, grid);
 		assignLabel("conditions", "conditions", "weatherlabels", conditions, grid);
-
+		assignLabel("image", "sunimage", "images", "", grid);
 		makeandAssign("maxtemp", "maxtemp", maxTemp, grid);
 		assignLabel("maxtemplabel", "maxtemplabel", "weatherlabels", "HIGH", grid);
 		makeandAssign("mintemp", "mintemp", minTemp, grid);
 		assignLabel("mintemplabel", "mintemplabel", "weatherlabels", "LOW", grid);
 	}
-
 	//once the grid is appended, you can grab elements and add the correct information
 }
 

@@ -81,6 +81,18 @@ form {
 #sunimage {
 	content: url("../images/sun.svg");
 }
+#cloudimage {
+	content: url("../images/cloud.svg");
+}
+#rainimage {
+	content: url("../images/rain.svg");
+}
+#snowimage {
+	content: url("../images/snow.svg");
+}
+#stormimage {
+	content: url("../images/storm.svg");
+}
 
 #grid1 {
 	height: 100%;

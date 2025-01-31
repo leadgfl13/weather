@@ -58,8 +58,6 @@ const states = [
 const forecast = document.getElementById("forecast");
 const searchbutton = document.getElementById("submit");
 
-const sun = document.createElement("img");
-sun.src = "../images/sun.svg";
 //adds the states to the dropdown menu
 const drop = document.getElementById("stateDropdown");
 for (const state of states) {
@@ -145,6 +143,7 @@ function makeGrid(amount, response) {
 		console.log(response);
 		let date = response.days[z].datetime;
 		let conditions = response.days[z].conditions;
+		let conditioncheck = conditions.toLowerCase();
 		let maxTemp = response.days[z].tempmax;
 		let feels = response.days[z].feelslike;
 		let minTemp = response.days[z].tempmin;
@@ -154,7 +153,7 @@ function makeGrid(amount, response) {
 		forecast.append(grid);
 		assignLabel("date", "date", "weatherlabels", date, grid);
 		assignLabel("conditions", "conditions", "weatherlabels", conditions, grid);
-		assignLabel("image", addImage(conditions), "images", "", grid);
+		assignLabel("image", addImage(conditioncheck), "images", "", grid);
 		makeandAssign("maxtemp", "maxtemp", maxTemp, grid);
 		assignLabel("maxtemplabel", "maxtemplabel", "weatherlabels", "HIGH", grid);
 		makeandAssign("mintemp", "mintemp", minTemp, grid);

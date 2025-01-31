@@ -138,10 +138,16 @@ function addImage(string) {
 	}
 }
 
+function getDay(dateTime) {
+	let theday = dateTime.getDay();
+	console.log(theday);
+}
+
 function makeGrid(amount, response) {
 	for (let z = 0; z < amount; z++) {
-		console.log(response);
 		let date = response.days[z].datetime;
+		let day = new Date(date);
+		console.log(response);
 		let conditions = response.days[z].conditions;
 		let conditioncheck = conditions.toLowerCase();
 		let maxTemp = response.days[z].tempmax;
@@ -151,7 +157,7 @@ function makeGrid(amount, response) {
 		grid.setAttribute("id", `grid${amount}`);
 		grid.setAttribute("class", "daygrid");
 		forecast.append(grid);
-		assignLabel("date", "date", "weatherlabels", date, grid);
+		assignLabel("date", "date", "weatherlabels", day, grid);
 		assignLabel("conditions", "conditions", "weatherlabels", conditions, grid);
 		assignLabel("image", addImage(conditioncheck), "images", "", grid);
 		makeandAssign("maxtemp", "maxtemp", maxTemp, grid);

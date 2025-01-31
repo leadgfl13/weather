@@ -17,7 +17,7 @@ body {
 .right {
 	height: 100vh;
 	border: 2px solid darkblue;
-	background-color: skyblue;
+	background-color: rgb(240, 170, 121);
 	grid-area: 1/2/1/3;
 	display: flex;
 	justify-content: space-around;

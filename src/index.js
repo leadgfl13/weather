@@ -146,7 +146,7 @@ function getDay(dateTime) {
 function makeGrid(amount, response) {
 	for (let z = 0; z < amount; z++) {
 		let date = response.days[z].datetime;
-		let day = new Date(date);
+		let day = String(new Date(date)).substr(0, 16);
 		console.log(response);
 		let conditions = response.days[z].conditions;
 		let conditioncheck = conditions.toLowerCase();

@@ -132,6 +132,12 @@ function addImage(string) {
 	if (string.includes("snow")) {
 		return "snowimage";
 	}
+	if (string.includes("clear")) {
+		return "clearimage";
+	}
+	if (string.includes("Partially")) {
+		return "partlysunimage";
+	}
 }
 
 function makeGrid(amount, response) {

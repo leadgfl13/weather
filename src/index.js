@@ -98,10 +98,11 @@ searchbutton.addEventListener("click", (e) => {
 	getWeather(test, state);
 });
 
-function makeandAssign(name, id, weathervar, appendee) {
+function makeandAssign(name, id, clask, weathervar, appendee) {
 	name = document.createElement("div");
 	name.setAttribute("id", id);
 	name.innerHTML = weathervar;
+	name.setAttribute("class", clask);
 	appendee.append(name);
 }
 
@@ -160,9 +161,9 @@ function makeGrid(amount, response) {
 		assignLabel("date", "date", "weatherlabels", day, grid);
 		assignLabel("conditions", "conditions", "weatherlabels", conditions, grid);
 		assignLabel("image", addImage(conditioncheck), "images", "", grid);
-		makeandAssign("maxtemp", "maxtemp", maxTemp, grid);
+		makeandAssign("maxtemp", "maxtemp", "weatherlabels", maxTemp, grid);
 		assignLabel("maxtemplabel", "maxtemplabel", "weatherlabels", "HIGH", grid);
-		makeandAssign("mintemp", "mintemp", minTemp, grid);
+		makeandAssign("mintemp", "mintemp", "weatherlabels", minTemp, grid);
 		assignLabel("mintemplabel", "mintemplabel", "weatherlabels", "LOW", grid);
 	}
 	//once the grid is appended, you can grab elements and add the correct information

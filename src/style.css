@@ -31,6 +31,7 @@ body {
 	align-self: center;
 }
 .right {
+	overflow-x: scroll;
 	border-left: 10px black groove;
 	height: 100vh;
 	width: 100%;
@@ -79,9 +80,9 @@ form {
 	background-color: skyblue;
 	height: 80%;
 	display: grid;
+	width: 100%;
 	justify-content: space-around;
 	align-items: center;
-	width: 150px;
 	grid-template-rows: 1fr 2fr 1fr 1fr 2fr min-content;
 	grid-template-columns: 1fr 1fr min-content;
 	margin: 5px;

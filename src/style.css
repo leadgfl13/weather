@@ -75,34 +75,34 @@ form {
 }
 .daygrid {
 	border-radius: 10px;
+	border: 8px solid black;
 	background-color: skyblue;
 	height: 80%;
 	display: grid;
 	justify-content: space-around;
 	align-items: center;
-	row-gap: 2px;
-	gap: 2px;
-	column-gap: 2px;
-	row-gap: 10px;
 	width: 150px;
-	grid-template-rows: 1fr 2fr 1fr 1fr 2fr;
-	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 2fr 1fr 1fr 2fr min-content;
+	grid-template-columns: 1fr 1fr min-content;
 	margin: 5px;
 }
 
+#gridhover {
+	background-color: red;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+}
 .weatherlabels {
-	border-radius: 10px;
 }
 
 .images {
-	border-radius: 10px;
-
 	justify-self: stretch;
 	align-self: stretch;
 	width: 100%;
 	height: 200px;
 	grid-area: 2/1/3/3;
-	border: 2px solid black;
 	margin: auto;
 }
 #sunimage {
@@ -158,8 +158,7 @@ form {
 	grid-area: 4/1/5/2;
 }
 #maxtemp {
-	height: 100%;
-	width: 100%;
+	margin: auto;
 	display: flex;
 	background-color: orange;
 	font-size: 18px;

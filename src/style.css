@@ -92,7 +92,6 @@ form {
 
 .weatherlabels {
 	border-radius: 10px;
-	border: 2px solid black;
 }
 
 .images {
@@ -162,17 +161,18 @@ form {
 	height: 100%;
 	width: 100%;
 	display: flex;
-	background-color: papayawhip;
+	background-color: orange;
 	font-size: 18px;
 	justify-content: center;
 	align-items: center;
 	grid-area: 3/2/4/3;
 }
 #mintemp {
+	background-color: cornflowerblue;
+	margin: 0px;
 	height: 100%;
 	width: 100%;
 	display: flex;
-	background-color: papayawhip;
 	font-size: 18px;
 	justify-content: center;
 	align-items: center;

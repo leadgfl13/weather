@@ -145,7 +145,7 @@ function getDay(dateTime) {
 }
 
 function makeGrid(amount, response) {
-	for (let z = 0; z < amount; z++) {
+	for (let z = 1; z <= amount; z++) {
 		let date = response.days[z].datetime;
 		let day = String(new Date(date)).substr(0, 16);
 		console.log(response);
@@ -164,6 +164,10 @@ function makeGrid(amount, response) {
 		makeandAssign("maxtemp", "maxtemp", "weatherlabels", maxTemp, grid);
 		assignLabel("maxtemplabel", "maxtemplabel", "weatherlabels", "HIGH", grid);
 		makeandAssign("mintemp", "mintemp", "weatherlabels", minTemp, grid);
+		let mintempdiv = document.getElementById("mintemp");
+		mintempdiv.addEventListener("click", () => {
+			alert("I have been clicked as the min temp");
+		});
 		assignLabel("mintemplabel", "mintemplabel", "weatherlabels", "LOW", grid);
 	}
 	//once the grid is appended, you can grab elements and add the correct information

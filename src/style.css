@@ -78,14 +78,13 @@ form {
 .daygrid {
 	border-radius: 10px;
 	border: 8px solid black;
-	background-color: skyblue;
 	height: 80%;
 	display: grid;
 	width: 90%;
 	justify-content: space-around;
 	align-items: center;
-	grid-template-rows: 1fr 2fr 1fr 1fr 2fr min-content;
-	grid-template-columns: 1fr 1fr min-content;
+	grid-template-rows: 1fr 2fr 1fr 1fr 2fr;
+	grid-template-columns: 1fr 1fr;
 	margin: 5px;
 }
 
@@ -96,18 +95,19 @@ form {
 	height: 100%;
 	width: 100%;
 }
-.weatherlabels {
-	font-size: 20px;
-}
 
 .images {
-	justify-self: stretch;
-	align-self: stretch;
-	width: 100%;
-	height: fit-content;
+	max-height: 100%;
+	max-width: 100%;
+	min-height: 100%;
+	min-width: 100%;
+	margin-bottom: -2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	grid-area: 2/1/3/3;
-	margin: auto;
 }
+
 #sunimage {
 	content: url("../images/sun.png");
 }
@@ -120,6 +120,7 @@ form {
 #snowimage {
 	content: url("../images/snow.svg");
 }
+
 #stormimage {
 	content: url("../images/storm.svg");
 }
@@ -184,12 +185,4 @@ form {
 	margin-top: -2px;
 	background-color: cornflowerblue;
 	grid-area: 4/2/5/3;
-}
-
-#grid100 {
-	display: flex;
-	align-items: center;
-	justify-content: Center;
-	background-color: red;
-	grid-area: span;
 }
